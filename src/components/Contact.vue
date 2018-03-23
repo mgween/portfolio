@@ -47,7 +47,7 @@ export default {
   },
   methods: {
     sendMessage() {
-      fetch(`${this.server}/send-message`, {
+      fetch(`/send-message`, {
         method: 'POST',
         body: JSON.stringify(this.form),
         headers: { 'Content-Type': 'application/json' }
@@ -59,7 +59,6 @@ export default {
           return response.json();
         };
       }).then(data => {
-        console.log(data);
         if (data.accepted) {
           Object.keys(this.form).forEach(item => {
             this.form[item] = ''
@@ -68,6 +67,8 @@ export default {
         } else {
           this.changeToast('error');
         };
+      }).catch(err => {
+        this.changeToast('error');
       });
     },
     changeToast(type) {

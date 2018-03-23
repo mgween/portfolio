@@ -37,10 +37,7 @@ app.post('/send-message', (req, res) => {
         <h3>Name: ${req.body.name}</h3>
         <h3>Email: ${req.body.email}</h3>
         <p>${req.body.message}</p>
-      `,
-      // envelope: {
-      //   from: `${req.body.name} <${req.body.email}>`
-      // }
+      `
     },
     (err, info) => {
       if (err) {
@@ -50,6 +47,10 @@ app.post('/send-message', (req, res) => {
       };
     }
   );
+});
+
+app.get('*', (req, res) => {
+  res.redirect('/');
 });
 
 io.on('connection', socket => {

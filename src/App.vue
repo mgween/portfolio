@@ -21,7 +21,6 @@ import Vue from 'vue';
 Vue.mixin({
   data() {
     return {
-      server: 'http://localhost:2626',
       colors: [
         '#ffb3ba',
         '#ffdfba',

@@ -18,6 +18,12 @@
 <script>
 import Vue from 'vue';
 
+import fontawesome from '@fortawesome/fontawesome';
+import FontAwesomeIcon from '@fortawesome/vue-fontawesome';
+import { faArrowCircleRight, faEnvelope } from '@fortawesome/fontawesome-free-solid';
+fontawesome.library.add(faArrowCircleRight, faEnvelope);
+Vue.component('font-awesome-icon', FontAwesomeIcon);
+
 Vue.mixin({
   data() {
     return {
@@ -47,11 +53,14 @@ export default {
 </script>
 
 <style>
-@import url('https://fonts.googleapis.com/css?family=Quicksand');
+@font-face {
+  font-family: Quicksand;
+  src: url('/static/font/Quicksand-Regular.ttf');
+}
 
 body {
   background: #636363;
-  font-family: 'Quicksand', sans-serif;
+  font-family: 'Quicksand';
   overflow-x: hidden;
 }
 @media screen and (min-width: 769px) {

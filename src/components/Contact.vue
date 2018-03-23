@@ -6,7 +6,9 @@
         <input v-model="form.email" placeholder="Your Email Address" name="email" class="bottom-margin">
         <input v-model="form.subject" placeholder="Subject" name="subject" class="bottom-margin">
         <textarea v-model="form.message" rows="15" placeholder="Message" class="bottom-margin"></textarea>
-        <button type="submit" name="submit" :disabled="!valid" :class="submitButtonClass"><i class="fa fa-envelope-o fa-2x" aria-label="Send Message"></i></button>
+        <button type="submit" name="submit" :disabled="!valid" :class="submitButtonClass">
+          <font-awesome-icon icon="envelope" size="2x"/>
+        </button>
       </form>
       <div :style="{ background: colors[0] }">
         If you would like to contact me with any questions, employment opportunities, or just to chat you can do so with this form.<br><br>You can also email me at <a href="mailto:dev@mattgween.com" target="_blank" rel="noopener">dev@mattgween.com</a>. I respond promptly to any serious inquiries.

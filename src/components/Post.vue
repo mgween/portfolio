@@ -3,7 +3,9 @@
     <h2>{{ post.title }}</h2>
     <p v-html="post.body"></p>
     <!-- :to="'/demo/' + post.path" -->
-    <router-link to="/coming-soon" class="demo-link"><i class="fa fa-arrow-circle-right fa-2x" :aria-label="`Link to ${post.title} Demo`"></i></router-link>
+    <router-link to="/coming-soon" class="demo-link">
+      <font-awesome-icon icon="arrow-circle-right" size="2x"/>
+    </router-link>
   </div>
 </template>
 

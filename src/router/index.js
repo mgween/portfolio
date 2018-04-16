@@ -14,11 +14,6 @@ Vue.use(Router);
 export default new Router({
   routes: [
     {
-      path: '/coming-soon',
-      name: 'ComingSoon',
-      component: ComingSoon
-    },
-    {
       path: '/home',
       name: 'Home',
       component: Home
@@ -34,22 +29,20 @@ export default new Router({
       component: Contact
     },
     {
-      path: '/search',
-      component: Search
+      path: '/demo/search',
+      component: ComingSoon
     },
     {
-      path: 'live',
-      alias: '/demo/live',
-      name: 'LiveUpdates',
-      component: LiveUpdates
+      path: '/demo/live',
+      component: ComingSoon
     },
     {
-      path: '/api',
+      path: '/demo/api',
       component: Api
     },
     {
-      path: '/marketing',
-      component: Marketing
+      path: '/demo/marketing',
+      component: ComingSoon
     },
     {
       path: '*',

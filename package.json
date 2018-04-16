@@ -16,6 +16,7 @@
     "cors": "^2.8.4",
     "express": "^4.16.2",
     "nodemailer": "^4.4.2",
+    "request": "^2.85.0",
     "rethinkdbdash": "^2.3.31",
     "socket.io": "^2.0.4",
     "uuid": "^3.2.1",

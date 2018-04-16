@@ -20,13 +20,19 @@ import Vue from 'vue';
 
 import fontawesome from '@fortawesome/fontawesome';
 import FontAwesomeIcon from '@fortawesome/vue-fontawesome';
-import { faArrowCircleRight, faEnvelope } from '@fortawesome/fontawesome-free-solid';
-fontawesome.library.add(faArrowCircleRight, faEnvelope);
+import {
+  faArrowCircleRight,
+  faEnvelope,
+  faPencilAlt,
+  faRocket,
+  faPaintBrush
+} from '@fortawesome/fontawesome-free-solid';
 Vue.component('font-awesome-icon', FontAwesomeIcon);
 
 Vue.mixin({
   data() {
     return {
+      server: 'http://localhost:2626',
       colors: [
         '#ffb3ba',
         '#ffdfba',
@@ -65,7 +71,7 @@ body {
 }
 @media screen and (min-width: 769px) {
   body {
-    margin: 0 25vw 1rem;
+    margin: 0 20vw 1rem;
   }
 }
 .route-enter-active, .route-leave-active {
@@ -76,6 +82,12 @@ body {
 }
 .route-leave-to {
   transform: translateX(160%);
+}
+.collapse-enter-active, .collapse-leave-active {
+  transition: all .3s;
+}
+.collapse-enter, .collapse-leave-to {
+  transform: scale(0, 1);
 }
 input, textarea {
   background: rgba(0, 0, 0, 0);
@@ -93,6 +105,19 @@ input:focus {
 }
 textarea:focus {
   border: solid 2px #616161;
+}
+.icon-button {
+  color: #636363;
+  background: none;
+  border: none;
+  outline: none;
+  cursor: pointer;
+  transition: 0.5s;
+}
+.icon-button:hover {
+  transform: scale(1.7);
+  color: black;
+  transition: 0.5s;
 }
 
 .logo {

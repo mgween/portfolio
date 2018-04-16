@@ -4,6 +4,7 @@ const express = require('express');
 const app = express();
 const cors = require('cors');
 const http = require('http').Server(app);
+const request = require('request');
 const io = require('socket.io')(http);
 const nodemailer = require('nodemailer');
 // const r = require('rethinkdbdash')({
@@ -49,22 +50,34 @@ app.post('/send-message', (req, res) => {
   );
 });
 
+app.get('/xkcd', (req, res) => {
+  if (!req.query.num) {
+    request('http://xkcd.com/info.0.json', (err, response, body) => {
+      res.send(body);
+    });
+  } else {
+    request(`http://xkcd.com/${req.query.num}/info.0.json`, (err, response, body) => {
+      res.send(body);
+    });
+  };
+})
+
 app.get('*', (req, res) => {
   res.redirect('/');
 });
 
-io.on('connection', socket => {
-  socket.on('username', username => {
-    let seconds = 1;
-     updateTime = () => {
-      setTimeout(() => {
-        seconds++;
-        test();
-      }, 1000)
-    };
-    test();
-  });
-});
+// io.on('connection', socket => {
+//   socket.on('username', username => {
+//     let seconds = 1;
+//      updateTime = () => {
+//       setTimeout(() => {
+//         seconds++;
+//         test();
+//       }, 1000)
+//     };
+//     test();
+//   });
+// });
 
 const port = 2626;
 http.listen(port, () => {

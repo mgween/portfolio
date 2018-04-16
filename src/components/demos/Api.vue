@@ -121,7 +121,7 @@ export default {
     },
     getXkcd() {
       if (!this.xkcd.display) {
-        fetch(`${this.server}/xkcd`).then(response => {
+        fetch(`/xkcd`).then(response => {
           return response.json();
         }).then(data => {
           this.xkcd.max = data.num;
@@ -129,7 +129,7 @@ export default {
         });
       } else {
         const rand = Math.floor(Math.random() * this.xkcd.max) + 1;
-        fetch(`${this.server}/xkcd?num=${rand}`).then(response => {
+        fetch(`/xkcd?num=${rand}`).then(response => {
           return response.json();
         }).then(data => {
           this.xkcd.display = data;

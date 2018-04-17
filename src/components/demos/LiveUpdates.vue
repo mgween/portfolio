@@ -101,6 +101,7 @@ a {
 }
 .intro > input {
   font-size: 1.5em;
+  max-width: 90%;
 }
 .intro > * {
   margin: 1rem;

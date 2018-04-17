@@ -29,12 +29,15 @@
     </div>
     <transition name="collapse" mode="out-in">
       <div v-if="spaceX.display" :key="spaceX.display.flight_number" class="space-x-data">
-        <div style="display:flex">
+        <div class="space-x-details">
           <img :src="spaceX.display.links.mission_patch" width="200" height="200" class="space-x-img">
           <div>
-            Flight Number: {{ spaceX.display.flight_number }}</br></br>
-            Rocket: {{ spaceX.display.rocket.rocket_name }}</br></br>
-            Launch Date: {{ spaceX.display.launch_date_local }}</br></br>
+            Flight Number: {{ spaceX.display.flight_number }}</br>
+            </br>
+            Rocket: {{ spaceX.display.rocket.rocket_name }}</br>
+            </br>
+            Launch Date: {{ spaceX.display.launch_date_local | moment }}</br>
+            </br>
             Launch Site: {{ spaceX.display.launch_site.site_name_long }}
           </div>
         </div>
@@ -47,13 +50,13 @@
     <div class="title-bar">
       <div></div>
       <h2>xkcd Comics</h2>
-      <button @click="getXkcd" class="icon-button">
+      <button @click="getXkcd" ref="xkcdButton" class="icon-button">
         <font-awesome-icon icon="pencil-alt" size="2x"/>
       </button>
     </div>
     <transition name="collapse" mode="out-in">
       <div v-if="xkcd.display" :key="xkcd.display.num">
-        <img :src="xkcd.display.img" :title="xkcd.display.alt" style="max-width: 100%">
+        <img :src="xkcd.display.img" @click="openXkcd()" :title="xkcd.display.alt" class="xkcd-img">
       </div>
     </transition>
   </div>
@@ -121,7 +124,7 @@ export default {
     },
     getXkcd() {
       if (!this.xkcd.display) {
-        fetch(`/xkcd`).then(response => {
+        fetch(`${this.server}/xkcd`).then(response => {
           return response.json();
         }).then(data => {
           this.xkcd.max = data.num;
@@ -129,12 +132,16 @@ export default {
         });
       } else {
         const rand = Math.floor(Math.random() * this.xkcd.max) + 1;
-        fetch(`/xkcd?num=${rand}`).then(response => {
+        fetch(`${this.server}/xkcd?num=${rand}`).then(response => {
           return response.json();
         }).then(data => {
           this.xkcd.display = data;
+          scrollTo(this.$refs.xkcdButton)
         });
       };
+    },
+    openXkcd() {
+      window.open(this.xkcd.display.img);
     }
   },
   created() {
@@ -146,7 +153,7 @@ export default {
 
 <style lang="css" scoped>
 .icon-button:active {
-  color: #939393;
+  color: #bababa;
   transition: 0s;
 }
 .section {
@@ -163,7 +170,20 @@ export default {
 .space-x-data {
   width: 100%;
 }
+.space-x-details {
+  display: flex;
+}
+@media screen and (max-width:768px) {
+  .space-x-details {
+    flex-direction: column;
+    align-items: center;
+  }
+}
 .space-x-img {
   margin: 0 1rem 1rem 0;
+}
+.xkcd-img {
+  max-width: 100%;
+  cursor: pointer;
 }
 </style>

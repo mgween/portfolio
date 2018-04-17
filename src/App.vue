@@ -17,6 +17,10 @@
 
 <script>
 import Vue from 'vue';
+import moment from 'moment';
+Vue.filter('moment', (value) => {
+  return moment(value).format('DD MMMM YYYY hh:mm a')
+});
 
 import fontawesome from '@fortawesome/fontawesome';
 import FontAwesomeIcon from '@fortawesome/vue-fontawesome';
@@ -32,7 +36,7 @@ Vue.component('font-awesome-icon', FontAwesomeIcon);
 Vue.mixin({
   data() {
     return {
-      server: 'http://localhost:2626',
+      server: location.host === 'localhost:8080' ? 'http://localhost:2626' : '',
       colors: [
         '#ffb3ba',
         '#ffdfba',

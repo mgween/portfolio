@@ -5,6 +5,13 @@ export const descriptions = [
     path: "api"
   },
   {
+    body: "It is often important to have the most up-to-date and accurate information possible. Utilizing Socket.io, I can create an application that is always in sync across all users. No refreshing or manually updating needed.",
+    title: "Live Updates",
+    linkString: "Socket.io",
+    linkSite: "https://socket.io",
+    path: "live"
+  },
+  {
     body: "Searching though a database using custom parameters is a common feature of many projects. My database of choice is a NoSQL database called RethinkDB. This demo shows how complex queries can be used to find and manage data.",
     title: "Search Logic",
     linkString: "RethinkDB",
@@ -12,15 +19,8 @@ export const descriptions = [
     path: "search"
   },
   {
-    body: "It is often important to have the most up-to-date and accurate information possible. Utilizing RethinkDB's changefeed features in combination with Socket.io, I can create an application that is always in sync across all users. No refreshing or manually updating needed.",
-    title: "Live Updates",
-    linkString: "Socket.io",
-    linkSite: "https://socket.io",
-    path: "live"
-  },
-  {
     body: "Having a clean and professional website can go a long way in helping to attract new business. I can put together a site using the newest features of HTML5, CSS3, and ECMAScript 6 that will look good on any device.",
     title: "Static Marketing Site",
     path: "marketing"
-  }
+  },
 ]

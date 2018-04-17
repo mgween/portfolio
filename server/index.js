@@ -66,18 +66,11 @@ app.get('*', (req, res) => {
   res.redirect('/');
 });
 
-// io.on('connection', socket => {
-//   socket.on('username', username => {
-//     let seconds = 1;
-//      updateTime = () => {
-//       setTimeout(() => {
-//         seconds++;
-//         test();
-//       }, 1000)
-//     };
-//     test();
-//   });
-// });
+io.on('connection', socket => {
+  socket.on('message-out', data => {
+    io.emit('message-in', data);
+  })
+});
 
 const port = 2626;
 http.listen(port, () => {

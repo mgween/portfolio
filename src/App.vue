@@ -17,21 +17,6 @@
 
 <script>
 import Vue from 'vue';
-import moment from 'moment';
-Vue.filter('moment', (value) => {
-  return moment(value).format('DD MMMM YYYY hh:mm a')
-});
-
-import fontawesome from '@fortawesome/fontawesome';
-import FontAwesomeIcon from '@fortawesome/vue-fontawesome';
-import {
-  faArrowCircleRight,
-  faEnvelope,
-  faPencilAlt,
-  faRocket,
-  faPaintBrush
-} from '@fortawesome/fontawesome-free-solid';
-Vue.component('font-awesome-icon', FontAwesomeIcon);
 
 Vue.mixin({
   data() {
@@ -78,6 +63,33 @@ body {
     margin: 0 20vw 1rem;
   }
 }
+
+input, textarea {
+  /* https://stackoverflow.com/a/17212432 */
+  background: linear-gradient(to right, #c9c9c9 50%, white 50%);
+  background-size: 201% 100%;
+  background-position: left bottom;
+  border: none;
+  transition: 0.5s;
+  outline: none;
+  font-family: 'Quicksand', sans-serif;
+}
+input:focus, textarea:focus {
+  background-position: right bottom;
+}
+::-webkit-input-placeholder { /* Chrome/Opera/Safari */
+  color: black;
+}
+::-moz-placeholder { /* Firefox 19+ */
+  color: black;
+}
+:-ms-input-placeholder { /* IE 10+ */
+  color: black;
+}
+:-moz-placeholder { /* Firefox 18- */
+  color: black;
+}
+
 .route-enter-active, .route-leave-active {
   transition: 0.75s;
 }
@@ -92,23 +104,6 @@ body {
 }
 .collapse-enter, .collapse-leave-to {
   transform: scale(0, 1);
-}
-input, textarea {
-  background: rgba(0, 0, 0, 0);
-  border: none;
-  border-bottom: solid 2px #c9c9c9;
-  transition: border 0.5s;
-  outline: none;
-  font-family: 'Quicksand', sans-serif;
-}
-textarea {
-  border: solid 2px #c9c9c9;
-}
-input:focus {
-  border-bottom: solid 2px #616161;
-}
-textarea:focus {
-  border: solid 2px #616161;
 }
 .icon-button {
   color: #636363;

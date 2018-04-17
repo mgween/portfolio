@@ -15,17 +15,14 @@ export default new Router({
   routes: [
     {
       path: '/home',
-      name: 'Home',
       component: Home
     },
     {
       path: '/about',
-      name: 'About',
       component: About
     },
     {
       path: '/contact',
-      name: 'Contact',
       component: Contact
     },
     {
@@ -34,7 +31,7 @@ export default new Router({
     },
     {
       path: '/demo/live',
-      component: ComingSoon
+      component: LiveUpdates
     },
     {
       path: '/demo/api',

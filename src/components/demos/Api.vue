@@ -1,67 +1,67 @@
 <template lang="html">
-<div>
-
-  <div class="section" :style="{ background: sectionColors[0] }">
-    <div class="title-bar">
-      <div></div>
-      <h2>Quotes on Design</h2>
-      <button @click="getQuote" class="icon-button">
-        <font-awesome-icon icon="paint-brush" size="2x"/>
-      </button>
-    </div>
-    <transition name="collapse" mode="out-in">
-      <div v-if="quote" :key="quote.ID">
-        <div v-html="quote.content"></div>
-        <p>- {{ quote.title }}</p>
-        <a :href="quote.link">{{ quote.link }}</a>
+  <div>
+    <p>This page shows a few services that have public APIs that can be used to access different kinds of data.</p>
+    <div class="section" :style="{ background: colors[0] }">
+      <div class="title-bar">
+        <div></div>
+        <h2>Quotes on Design</h2>
+        <button @click="getQuote" class="icon-button">
+          <font-awesome-icon icon="paint-brush" size="2x"/>
+        </button>
       </div>
-    </transition>
-
-  </div>
-
-  <div class="section" :style="{ background: sectionColors[1] }">
-    <div class="title-bar">
-      <div></div>
-      <h2>SpaceX Launches</h2>
-      <button @click="getSpaceXData" class="icon-button">
-        <font-awesome-icon icon="rocket" size="2x"/>
-      </button>
-    </div>
-    <transition name="collapse" mode="out-in">
-      <div v-if="spaceX.display" :key="spaceX.display.flight_number" class="space-x-data">
-        <div class="space-x-details">
-          <img :src="spaceX.display.links.mission_patch" width="200" height="200" class="space-x-img">
-          <div>
-            Flight Number: {{ spaceX.display.flight_number }}</br>
-            </br>
-            Rocket: {{ spaceX.display.rocket.rocket_name }}</br>
-            </br>
-            Launch Date: {{ spaceX.display.launch_date_local | moment }}</br>
-            </br>
-            Launch Site: {{ spaceX.display.launch_site.site_name_long }}
-          </div>
+      <transition name="collapse" mode="out-in">
+        <div v-if="quote" :key="quote.ID">
+          <div v-html="quote.content"></div>
+          <p>- {{ quote.title }}</p>
+          <a :href="quote.link">{{ quote.link }}</a>
         </div>
-        {{ spaceX.display.details }}
-      </div>
-    </transition>
-  </div>
+      </transition>
 
-  <div class="section" :style="{ background: sectionColors[2] }">
-    <div class="title-bar">
-      <div></div>
-      <h2>xkcd Comics</h2>
-      <button @click="getXkcd" ref="xkcdButton" class="icon-button">
-        <font-awesome-icon icon="pencil-alt" size="2x"/>
-      </button>
     </div>
-    <transition name="collapse" mode="out-in">
-      <div v-if="xkcd.display" :key="xkcd.display.num">
-        <img :src="xkcd.display.img" @click="openXkcd()" :title="xkcd.display.alt" class="xkcd-img">
-      </div>
-    </transition>
-  </div>
 
-</div>
+    <div class="section" :style="{ background: colors[1] }">
+      <div class="title-bar">
+        <div></div>
+        <h2>SpaceX Launches</h2>
+        <button @click="getSpaceXData" class="icon-button">
+          <font-awesome-icon icon="rocket" size="2x"/>
+        </button>
+      </div>
+      <transition name="collapse" mode="out-in">
+        <div v-if="spaceX.display" :key="spaceX.display.flight_number" class="space-x-data">
+          <div class="space-x-details">
+            <img :src="spaceX.display.links.mission_patch" width="200" height="200" class="space-x-img">
+            <div>
+              Flight Number: {{ spaceX.display.flight_number }}</br>
+              </br>
+              Rocket: {{ spaceX.display.rocket.rocket_name }}</br>
+              </br>
+              Launch Date: {{ spaceX.display.launch_date_local | moment }}</br>
+              </br>
+              Launch Site: {{ spaceX.display.launch_site.site_name_long }}
+            </div>
+          </div>
+          {{ spaceX.display.details }}
+        </div>
+      </transition>
+    </div>
+
+    <div class="section" :style="{ background: colors[2] }">
+      <div class="title-bar">
+        <div></div>
+        <h2>xkcd Comics</h2>
+        <button @click="getXkcd" ref="xkcdButton" class="icon-button">
+          <font-awesome-icon icon="pencil-alt" size="2x"/>
+        </button>
+      </div>
+      <transition name="collapse" mode="out-in">
+        <div v-if="xkcd.display" :key="xkcd.display.num">
+          <img :src="xkcd.display.img" @click="openXkcd()" :title="xkcd.display.alt" class="xkcd-img">
+        </div>
+      </transition>
+    </div>
+
+  </div>
 </template>
 
 <script>
@@ -146,12 +146,14 @@ export default {
   },
   created() {
     this.shuffleArray(this.colors);
-    this.sectionColors = this.colors.slice(0, 3)
   }
 }
 </script>
 
 <style lang="css" scoped>
+p {
+  color: white;
+}
 .icon-button:active {
   color: #bababa;
   transition: 0s;

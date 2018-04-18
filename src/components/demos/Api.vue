@@ -1,6 +1,6 @@
 <template lang="html">
   <div>
-    <p>This page shows a few services that have public APIs that can be used to access different kinds of data.</p>
+    <p class="description">This page shows a few services that have public APIs that can be used to access different kinds of data.</p>
     <div class="section" :style="{ background: colors[0] }">
       <div class="title-bar">
         <div></div>
@@ -151,7 +151,7 @@ export default {
 </script>
 
 <style lang="css" scoped>
-p {
+.description {
   color: white;
 }
 .icon-button:active {

@@ -5,7 +5,7 @@
       <h1>Matt Gween</h1>
     </div>
     <div class="nav-bar">
-      <router-link :to="'/home'" :class="{'active-page': $route.path === '/home'}">Home</router-link>
+      <router-link :to="'/home'" :class="{'active-page': $route.path === '/home'}">Demos</router-link>
       <router-link :to="'/about'" :class="{'active-page': $route.path === '/about'}">About</router-link>
       <router-link :to="'/contact'" :class="{'active-page': $route.path === '/contact'}">Contact</router-link>
     </div>

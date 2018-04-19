@@ -177,6 +177,13 @@ export default {
   .form-big-inputs > *, .form-small-inputs > * {
     width: 90% !important;
   }
+  .profile-details {
+    flex-direction: column;
+    align-items: center;
+  }
+  .profile-details > div {
+    margin-top: 1rem;
+  }
 }
 p {
   color: white;
@@ -236,6 +243,7 @@ input, select {
   flex-direction: column;
   padding: 1rem;
   border-radius: 3rem;
+  margin-bottom: 1rem;
 }
 .profile > span {
   align-self: center;

@@ -1,5 +1,10 @@
 export const descriptions = [
   {
+    body: "Gathing information from forms is an important part of many projects. Well-designed forms that are capable of accepting many different kinds of input are crucial in creating an effective application.",
+    title: "Complex Forms",
+    path: "form"
+  },
+  {
     body: "Many services offer external APIs that can be used to integrate their data into other projects. This can be very useful for anything from accessing records from a VOIP phone service to displaying social media posts.",
     title: "External API Usage",
     path: "api"

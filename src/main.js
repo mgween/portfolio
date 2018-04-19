@@ -7,21 +7,11 @@ import VueChatScroll from 'vue-chat-scroll';
 import moment from 'moment';
 import fontawesome from '@fortawesome/fontawesome';
 import FontAwesomeIcon from '@fortawesome/vue-fontawesome';
-import {
-  faArrowCircleRight,
-  faEnvelope,
-  faPencilAlt,
-  faRocket,
-  faPaintBrush,
-  faPaperPlane,
-  faComments
-} from '@fortawesome/fontawesome-free-solid';
+import '@fortawesome/fontawesome-free-solid';
 
 Vue.use(VueChatScroll);
 
-Vue.filter('moment', (value) => {
-  return moment(value).format('DD MMMM YYYY hh:mm a')
-});
+Vue.prototype.$moment = moment;
 
 Vue.component('font-awesome-icon', FontAwesomeIcon);
 

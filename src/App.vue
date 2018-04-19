@@ -22,7 +22,7 @@ Vue.mixin({
   data() {
     return {
       server: location.host === 'localhost:8080' ? 'http://localhost:2626' : '',
-      colors: [
+      palette: [
         '#ffb3ba',
         '#ffdfba',
         '#ffffba',
@@ -57,6 +57,7 @@ body {
   background: #636363;
   font-family: 'Quicksand';
   overflow-x: hidden;
+  margin: 0;
 }
 @media screen and (min-width: 769px) {
   body {
@@ -64,18 +65,18 @@ body {
   }
 }
 
-input, textarea {
+input, textarea, select {
   /* https://stackoverflow.com/a/17212432 */
   background: linear-gradient(to right, #c9c9c9 50%, white 50%);
-  background-size: 201% 100%;
-  background-position: left bottom;
+  background-size: 202% 100% !important;
+  background-position: left bottom !important;
   border: none;
   transition: 0.5s;
   outline: none;
   font-family: 'Quicksand', sans-serif;
 }
-input:focus, textarea:focus {
-  background-position: right bottom;
+input:focus, textarea:focus, select:focus {
+  background-position: right bottom !important;
 }
 ::-webkit-input-placeholder { /* Chrome/Opera/Safari */
   color: black;
@@ -122,7 +123,7 @@ input:focus, textarea:focus {
 .logo {
   display: flex;
   align-items: center;
-  margin: 1rem 0;
+  margin: 1rem;
 }
 .logo > img {
   margin-right: 1rem;

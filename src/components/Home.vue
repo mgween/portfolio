@@ -15,9 +15,9 @@ export default {
   name: 'Home',
   components: { Post },
   created() {
-    this.shuffleArray(this.colors);
+    this.shuffleArray(this.palette);
     descriptions.forEach((item, index) => {
-      item['color'] = this.colors[index];
+      item['color'] = this.palette[index];
       if (item.linkString) {
         item.body = item.body.replace(
           item.linkString,

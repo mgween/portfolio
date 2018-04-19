@@ -1,7 +1,7 @@
 <template lang="html">
   <div>
     <p class="description">This page shows a few services that have public APIs that can be used to access different kinds of data.</p>
-    <div class="section" :style="{ background: colors[0] }">
+    <div class="section" :style="{ background: palette[0] }">
       <div class="title-bar">
         <div></div>
         <h2>Quotes on Design</h2>
@@ -19,7 +19,7 @@
 
     </div>
 
-    <div class="section" :style="{ background: colors[1] }">
+    <div class="section" :style="{ background: palette[1] }">
       <div class="title-bar">
         <div></div>
         <h2>SpaceX Launches</h2>
@@ -36,7 +36,7 @@
               </br>
               Rocket: {{ spaceX.display.rocket.rocket_name }}</br>
               </br>
-              Launch Date: {{ spaceX.display.launch_date_local | moment }}</br>
+              Launch Date: {{ $moment(spaceX.display.launch_date_local).format('DD MMM YYYY HH:mm a') }}</br>
               </br>
               Launch Site: {{ spaceX.display.launch_site.site_name_long }}
             </div>
@@ -46,7 +46,7 @@
       </transition>
     </div>
 
-    <div class="section" :style="{ background: colors[2] }">
+    <div class="section" :style="{ background: palette[2] }">
       <div class="title-bar">
         <div></div>
         <h2>xkcd Comics</h2>
@@ -78,7 +78,7 @@ export default {
         max: null,
         display: null
       },
-      sectionColors: []
+      sectionpalette: []
     }
   },
   methods: {
@@ -145,7 +145,7 @@ export default {
     }
   },
   created() {
-    this.shuffleArray(this.colors);
+    this.shuffleArray(this.palette);
   }
 }
 </script>

@@ -1,10 +1,10 @@
 <template lang="html">
   <div>
 
-    <p>This is a simple chat application. You can open this page in a new tab with <a target="_blank" :href="'#' + $route.fullPath" :style="{ color: colors[3] }">this link</a> to see how the messages are recieved in real time.</p>
+    <p>This is a simple chat application. You can open this page in a new tab with <a target="_blank" :href="'#' + $route.fullPath" :style="{ color: palette[3] }">this link</a> to see how the messages are recieved in real time.</p>
 
     <transition name="collapse" mode="out-in">
-      <div v-if="!socket" key="intro" :style="{ background: colors[0] }" class="intro">
+      <div v-if="!socket" key="intro" :style="{ background: palette[0] }" class="intro">
         <h2>What is your name?</h2>
         <input v-model="username" @keyup.enter="connect">
         <button v-if="username" @click="connect" class="icon-button">
@@ -15,12 +15,12 @@
       <div v-else key="chat" class="chat-container">
 
         <div v-chat-scroll class="chat-log">
-          <div v-for="message in chatLog" :style="{ background: colors[1] }">
+          <div v-for="message in chatLog" :style="{ background: palette[1] }">
             {{ message.author }}: <strong>{{ message.text }}</strong>
           </div>
         </div>
 
-        <div class="sender" :style="{ background: colors[2] }">
+        <div class="sender" :style="{ background: palette[2] }">
           <textarea v-model="message" @keyup.enter="sendMessage" placeholder="Enter a message." />
           <button @click="sendMessage" class="icon-button">
             <font-awesome-icon icon="paper-plane" size="2x"/>
@@ -75,7 +75,7 @@ export default {
     }
   },
   created() {
-    this.shuffleArray(this.colors);
+    this.shuffleArray(this.palette);
     window.addEventListener('beforeunload', this.sendLogout);
   },
   destroyed() {
@@ -92,7 +92,6 @@ p {
 }
 a {
   font-weight: bold;
-  text-decoration: none;
 }
 .intro {
   display: flex;

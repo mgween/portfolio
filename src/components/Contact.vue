@@ -10,7 +10,7 @@
           <font-awesome-icon icon="envelope" size="2x"/>
         </button>
       </form>
-      <div :style="{ background: colors[0] }">
+      <div :style="{ background: palette[0] }">
         If you would like to contact me with any questions, employment opportunities, or just to chat you can do so with this form.<br><br>You can also email me at <a href="mailto:dev@mattgween.com" target="_blank" rel="noopener">dev@mattgween.com</a>. I respond promptly to any serious inquiries.
       </div>
     </div>
@@ -83,7 +83,7 @@ export default {
     }
   },
   created() {
-    this.shuffleArray(this.colors);
+    this.shuffleArray(this.palette);
   }
 }
 </script>

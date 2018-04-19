@@ -106,6 +106,12 @@ input:focus, textarea:focus, select:focus {
 .collapse-enter, .collapse-leave-to {
   transform: scale(0, 1);
 }
+.fade-enter-active, .fade-leave-active {
+  transition: opacity .5s;
+}
+.fade-enter, .fade-leave-to {
+  opacity: 0;
+}
 .icon-button {
   color: #636363;
   background: none;

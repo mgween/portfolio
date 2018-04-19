@@ -5,19 +5,19 @@
     <form v-if="stage === 'form'">
 
       <div class="form-small-inputs">
-        <div>
+        <div :style="{ background: palette[0] }">
           <h2>Nickname</h2>
           <input v-model="profile.nickname"
-          :style="{ background: `linear-gradient(to right, #c9c9c9 50%, ${palette[2]} 50%)` }">
+          :style="{ background: `linear-gradient(to right, #c9c9c9 50%, ${palette[1]} 50%)` }">
         </div>
-        <div>
+        <div :style="{ background: palette[2] }">
           <h2>Birthday</h2>
           <input v-model="profile.birthday" type="date"
           :style="{ background: `linear-gradient(to right, #c9c9c9 50%, ${palette[3]} 50%)` }">
         </div>
-        <div>
+        <div :style="{ background: palette[4] }">
           <h2>Favorite Drink</h2>
-          <select v-model="profile.drink" :style="{ background: `linear-gradient(to right, #c9c9c9 50%, ${palette[4]} 50%)` }">
+          <select v-model="profile.drink" :style="{ background: `linear-gradient(to right, #c9c9c9 50%, ${palette[5]} 50%)` }">
             <option disabled value="null">-- Drinks --</option>
             <optgroup label="Alcoholic">
               <option v-for="drink in drinkList.alcoholic">
@@ -34,13 +34,13 @@
       </div>
 
       <div class="form-big-inputs">
-        <div>
+        <div :style="{ background: palette[1] }">
           <h2>Color</h2>
           <div class="color-picker">
             <slider-picker v-model="profile.color" />
           </div>
         </div>
-        <div>
+        <div :style="{ background: palette[3] }">
           <h2>Icon</h2>
           <div class="icon-picker">
             <font-awesome-icon
@@ -70,15 +70,17 @@
       </div>
     </div>
 
-    <button v-if="validatorArray.length === 0"
-    @click="changeStage"
-    form="profileForm"
-    type="submit"
-    class="submit-button icon-button"
-    :style="{ background: palette[5] }">
-      <font-awesome-icon v-if="stage === 'form'" icon="arrow-right" size="2x" />
-      <font-awesome-icon v-if="stage === 'results'" icon="arrow-left" size="2x" />
-    </button>
+    <transition name="fade">
+      <button v-if="validatorArray.length === 0"
+      @click="changeStage"
+      form="profileForm"
+      type="submit"
+      class="submit-button icon-button"
+      :style="{ background: palette[5] }">
+        <font-awesome-icon v-if="stage === 'form'" icon="arrow-right" size="2x" />
+        <font-awesome-icon v-if="stage === 'results'" icon="arrow-left" size="2x" />
+      </button>
+    </transition>
 
   </div>
 </template>
@@ -188,10 +190,14 @@ input, select {
   justify-content: space-between;
 }
 .form-big-inputs > * {
-  width: 47%;
+  width: 40%;
+  padding: 1rem;
+  flex-grow: 1;
 }
 .form-small-inputs > * {
   width: 30%;
+  flex-grow: 1;
+  padding: 1rem;
 }
 .color-picker {
   height: 125px;

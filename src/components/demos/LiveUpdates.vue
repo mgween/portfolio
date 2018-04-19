@@ -7,9 +7,11 @@
       <div v-if="!socket" key="intro" :style="{ background: palette[0] }" class="intro">
         <h2>What is your name?</h2>
         <input v-model="username" @keyup.enter="connect">
-        <button v-if="username" @click="connect" class="icon-button">
-          <font-awesome-icon icon="comments" size="2x"/>
-        </button>
+        <transition name="fade">
+          <button v-if="username" @click="connect" class="icon-button">
+            <font-awesome-icon icon="comments" size="2x"/>
+          </button>
+        </transition>
       </div>
 
       <div v-else key="chat" class="chat-container">

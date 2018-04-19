@@ -1,6 +1,6 @@
 <template lang="html">
   <div>
-    <p class="intro">The examples below demonstrate a few of the features that I have had to implement in the course of my career. Consider it a small sample of the type of things that I could create for you.</p>
+    <p class="intro">The examples below demonstrate a few of the features that I have had to implement in the course of my career. These are features that are generally found in all kinds of applications.</p>
     <div class="demo-board">
       <Post v-for="post in demoPosts" :key="post.title" :post="post" :style="{ background: post.color }"></Post>
     </div>

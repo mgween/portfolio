@@ -38,6 +38,9 @@ Vue.mixin({
         let j = Math.floor(Math.random() * (i + 1));
         [array[i], array[j]] = [array[j], array[i]];
       };
+    },
+    inputColorizer(index) {
+      return { background: `linear-gradient(to right, #c9c9c9 50%, ${this.palette[index]} 50%)` };
     }
   }
 });

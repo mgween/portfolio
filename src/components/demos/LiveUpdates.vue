@@ -6,7 +6,7 @@
     <transition name="collapse" mode="out-in">
       <div v-if="!socket" key="intro" :style="{ background: palette[0] }" class="intro">
         <h2>What is your name?</h2>
-        <input v-model="username" @keyup.enter="connect">
+        <input v-model="username" @keyup.enter="connect" :style="inputColorizer(4)">
         <transition name="fade">
           <button v-if="username" @click="connect" class="icon-button">
             <font-awesome-icon icon="comments" size="2x"/>
@@ -23,7 +23,7 @@
         </div>
 
         <div class="sender" :style="{ background: palette[2] }">
-          <textarea v-model="message" @keyup.enter="sendMessage" placeholder="Enter a message." />
+          <textarea v-model="message" @keyup.enter="sendMessage" placeholder="Enter a message." :style="inputColorizer(5)" />
           <button @click="sendMessage" class="icon-button">
             <font-awesome-icon icon="paper-plane" size="2x"/>
           </button>

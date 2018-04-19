@@ -8,16 +8,16 @@
         <div :style="{ background: palette[0] }">
           <h2>Nickname</h2>
           <input v-model="profile.nickname"
-          :style="{ background: `linear-gradient(to right, #c9c9c9 50%, ${palette[1]} 50%)` }">
+          :style="inputColorizer(1)">
         </div>
         <div :style="{ background: palette[2] }">
           <h2>Birthday</h2>
           <input v-model="profile.birthday" type="date"
-          :style="{ background: `linear-gradient(to right, #c9c9c9 50%, ${palette[3]} 50%)` }">
+          :style="inputColorizer(3)">
         </div>
         <div :style="{ background: palette[4] }">
           <h2>Favorite Drink</h2>
-          <select v-model="profile.drink" :style="{ background: `linear-gradient(to right, #c9c9c9 50%, ${palette[5]} 50%)` }">
+          <select v-model="profile.drink" :style="inputColorizer(5)">
             <option disabled value="null">-- Drinks --</option>
             <optgroup label="Alcoholic">
               <option v-for="drink in drinkList.alcoholic">

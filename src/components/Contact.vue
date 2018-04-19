@@ -1,16 +1,16 @@
 <template lang="html">
   <div>
     <div class="contact">
-      <form @submit.prevent="sendMessage">
-        <input v-model="form.name" placeholder="Your Name" name="name" class="bottom-margin">
-        <input v-model="form.email" placeholder="Your Email Address" name="email" class="bottom-margin">
-        <input v-model="form.subject" placeholder="Subject" name="subject" class="bottom-margin">
-        <textarea v-model="form.message" rows="15" placeholder="Message" class="bottom-margin"></textarea>
+      <form @submit.prevent="sendMessage" :style="{ background: palette[0] }">
+        <input v-model="form.name" placeholder="Your Name" :style="inputColorizer(2)" name="name" class="bottom-margin">
+        <input v-model="form.email" placeholder="Your Email Address" :style="inputColorizer(3)" name="email" class="bottom-margin">
+        <input v-model="form.subject" placeholder="Subject" :style="inputColorizer(4)" name="subject" class="bottom-margin">
+        <textarea v-model="form.message" rows="15" placeholder="Message" :style="inputColorizer(5)" class="bottom-margin"></textarea>
         <button type="submit" name="submit" :disabled="!valid" :class="submitButtonClass">
           <font-awesome-icon icon="envelope" size="2x"/>
         </button>
       </form>
-      <div :style="{ background: palette[0] }">
+      <div :style="{ background: palette[1] }">
         If you would like to contact me with any questions, employment opportunities, or just to chat you can do so with this form.<br><br>You can also email me at <a href="mailto:dev@mattgween.com" target="_blank" rel="noopener">dev@mattgween.com</a>. I respond promptly to any serious inquiries.
       </div>
     </div>

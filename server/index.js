@@ -8,6 +8,7 @@ const request = require('request');
 const io = require('socket.io')(http);
 const nodemailer = require('nodemailer');
 const mongo = require('mongodb').MongoClient;
+const objectId = require('mongodb').ObjectId;
 
 app.use(cors());
 app.use(bodyParser.json());
@@ -74,16 +75,21 @@ mongo.connect('mongodb://localhost', (err, client) => {
   console.log('Connected to MongoDB');
 
   app.post('/save-profile', (req, res) => {
-    db.collection('profiles').insertOne(req.body).then(response => {
-      res.send(response.ops[0]._id);
-    });
-    // if (!req.body._id) {
-    // } else {
-    //   db.collection('profiles').updateOne(
-    //     ObjectId(req.body._id),
-    //     { $set }
-    //   );
-    // };
+    let o_id;
+    if (!req.body._id) {
+      db.collection('profiles').insertOne(req.body).then(response => {
+        res.send(response.ops[0]._id);
+      });
+    } else {
+      o_id = objectId(req.body._id);
+      delete req.body._id;
+      db.collection('profiles').updateOne(
+        { _id: o_id },
+        { $set: req.body }
+      ).then(response => {
+        res.send(response)
+      });
+    };
   });
 });
 

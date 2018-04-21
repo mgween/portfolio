@@ -166,7 +166,9 @@ export default {
           return response.json();
         }).then(data => {
           console.log(data);
-          this.profile['_id'] = data;
+          if (!this.profile._id) {
+            this.profile['_id'] = data;
+          };
         });
       } else {
         this.stage = 'form';

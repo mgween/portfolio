@@ -156,6 +156,18 @@ export default {
     changeStage() {
       if (this.stage === 'form') {
         this.stage = 'results';
+        fetch(`${this.server}/save-profile`, {
+          headers: {
+            'Content-Type': 'application/json'
+          },
+          method: 'POST',
+          body: JSON.stringify(this.profile)
+        }).then(response => {
+          return response.json();
+        }).then(data => {
+          console.log(data);
+          this.profile['_id'] = data;
+        });
       } else {
         this.stage = 'form';
       };

@@ -7,11 +7,7 @@ const http = require('http').Server(app);
 const request = require('request');
 const io = require('socket.io')(http);
 const nodemailer = require('nodemailer');
-// const r = require('rethinkdbdash')({
-//   port: 28015,
-//   host: 'localhost',
-//   db: 'portfolio'
-// });
+const mongo = require('mongodb').MongoClient;
 
 app.use(cors());
 app.use(bodyParser.json());
@@ -70,6 +66,25 @@ io.on('connection', socket => {
   socket.on('message-out', data => {
     io.emit('message-in', data);
   })
+});
+
+mongo.connect('mongodb://localhost', (err, client) => {
+  const db = client.db('portfolio');
+  if (err) throw err;
+  console.log('Connected to MongoDB');
+
+  app.post('/save-profile', (req, res) => {
+    db.collection('profiles').insertOne(req.body).then(response => {
+      res.send(response.ops[0]._id);
+    });
+    // if (!req.body._id) {
+    // } else {
+    //   db.collection('profiles').updateOne(
+    //     ObjectId(req.body._id),
+    //     { $set }
+    //   );
+    // };
+  });
 });
 
 const port = 2626;

@@ -243,7 +243,7 @@ input, select {
   flex-direction: column;
   padding: 1rem;
   border-radius: 3rem;
-  margin-bottom: 1rem;
+  margin-bottom: 5rem;
 }
 .profile > span {
   align-self: center;

@@ -175,11 +175,12 @@ export default {
         })
         .then(response => response.json())
         .then(data => {
-          if (!this.profile._id) {
-            this.profile['_id'] = data;
+          console.log(data);
+          if (!this.profile.id) {
+            this.profile['id'] = data.generated_keys[0];
           };
+          this.stage = 'results';
         });
-        this.stage = 'results';
       } else {
         this.stage = 'form';
       };

@@ -27,7 +27,7 @@ import Vue from 'vue';
 Vue.mixin({
   data() {
     return {
-      server: location.host === 'localhost:8080' ? 'http://localhost:2626' : '',
+      server: location.host === 'localhost:8081' ? 'http://localhost:2626' : '',
       palette: [
         '#ffb3ba',
         '#ffdfba',

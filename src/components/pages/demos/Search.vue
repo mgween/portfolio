@@ -24,7 +24,7 @@
           <tbody>
             <tr v-for="result in results" :key="result._id"
             :style="{ background: result.color.hex }">
-            <td>{{ result.created }}</td>
+            <td>{{ result.timestamp }}</td>
               <td>{{ result.icon }}</td>
               <td>{{ result.nickname }}</td>
               <td>{{ result.birthday }}</td>
@@ -54,8 +54,7 @@ export default {
         bdayStart: '',
         bdayEnd: '',
         drink: '',
-        icon: null,
-        color: null
+        icon: ''
       },
       results: null
     }

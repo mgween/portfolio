@@ -12,8 +12,6 @@ const r = require('rethinkdbdash')({
   host: 'localhost',
   db: 'portfolio'
 });
-// const mongo = require('mongodb').MongoClient;
-// const objectId = require('mongodb').ObjectId;
 
 app.use(cors());
 app.use(bodyParser.json());
@@ -81,81 +79,56 @@ app.post('/save-profile', (req, res) => {
   };
 });
 
+app.get('/get-profiles', (req, res) => {
+
+  const nicknameMatch = () => {
+    const escapeSpecialChars = (string) => {
+      const pattern = /[\-\[\]\/\{\}\(\)\*\+\?\.\\\^\$\|]/g;
+      return string.replace(pattern, '\\$&');
+    };
+    return r.row('nickname').match('(?i)' + escapeSpecialChars(req.query.nickname));
+  };
+
+  const birthdayMatch = () => {
+    const searchBefore = () => {
+      return r.row('birthday').le(new Date(req.query.bdayEnd))
+    };
+    const searchAfter = () => {
+      return r.row('birthday').ge(new Date(req.query.bdayStart))
+    };
+
+    if (req.query.bdayStart && req.query.bdayEnd) {
+      return searchAfter().and(searchBefore());
+    } else if (req.query.bdayStart) {
+      return searchAfter();
+    } else if (req.query.bdayEnd) {
+      return searchBefore();
+    } else {
+      return r.row;
+    };
+  };
+
+  const iconMatch = () => {
+    if (req.query.icon) {
+      return r.row('icon').eq(req.query.icon);
+    } else {
+      return r.row;
+    }
+  };
+
+  r.table('profiles')
+  .filter(
+    nicknameMatch().and(birthdayMatch()).and(iconMatch())
+  )
+  .then(data => res.send(data))
+  .catch(err => console.log(err));
+});
+
 io.on('connection', socket => {
   socket.on('message-out', data => {
     io.emit('message-in', data);
   })
 });
-
-
-// mongo.connect('mongodb://localhost', (err, client) => {
-//   if (err) throw err;
-//   console.log('Connected to MongoDB');
-//
-//   const db = client.db('portfolio');
-//
-//   app.post('/save-profile', (req, res) => {
-//     req.body.birthday = new Date(req.body.birthday);
-//     if (!req.body._id) {
-//       db.collection('profiles')
-//       .insertOne(req.body)
-//       .then(data => res.send(data.ops[0]._id));
-//     } else {
-//       delete req.body._id;
-//       db.collection('profiles')
-//       .updateOne(
-//         { _id: objectId(req.body._id) },
-//         { $set: req.body }
-//       )
-//       .then(data => res.send(data));
-//     };
-//   });
-//
-//   app.get('/get-profiles', (req, res) => {
-//
-//     const params = {};
-//
-//     if (req.query.nickname) {
-//       params['nickname'] = {
-//         $regex: req.query.nickname,
-//         $options: 'i'
-//       };
-//     };
-//
-//     if (req.query.bdayStart && req.query.bdayEnd) {
-//       req.query.bdayStart = new Date(req.query.bdayStart);
-//       req.query.bdayEnd = new Date(req.query.bdayEnd);
-//       params['birthday'] = {
-//         $gte: req.query.bdayStart,
-//         $lte: req.query.bdayEnd
-//       };
-//     }
-//     else if (req.query.bdayStart && !req.query.bdayEnd) {
-//       req.query.bdayStart = new Date(req.query.bdayStart);
-//       params['birthday'] = { $gte: req.query.bdayStart };
-//     }
-//     else if (!req.query.bdayStart && req.query.bdayEnd) {
-//       req.query.bdayEnd = new Date(req.query.bdayEnd);
-//       params['birthday'] = { $lte: req.query.bdayEnd };
-//     };
-//
-//     if (req.query.icon) {
-//       params['icon'] = req.query.icon;
-//     };
-//
-//     db.collection('profiles')
-//     .find(params)
-//     .toArray()
-//     .then((data, err) => {
-//       if (err) throw err;
-//       data.map(item => {
-//         item['created'] = item._id.getTimestamp();
-//       });
-//       res.send(data);
-//     });
-//   });
-//
-// });
 
 const port = 2626;
 http.listen(port, () => {

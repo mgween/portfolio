@@ -31,7 +31,7 @@ export default new Router({
     },
     {
       path: '/demo/search',
-      component: ComingSoon
+      component: Search
     },
     {
       path: '/demo/live',

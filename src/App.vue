@@ -4,14 +4,20 @@
       <img src="./assets/logo.png" height="100" width="100" alt="Matt's Logo">
       <h1>Matt Gween</h1>
     </div>
+    
     <div class="nav-bar">
       <router-link :to="'/home'" :class="{'active-page': $route.path === '/home'}">Demos</router-link>
       <router-link :to="'/about'" :class="{'active-page': $route.path === '/about'}">About</router-link>
       <router-link :to="'/contact'" :class="{'active-page': $route.path === '/contact'}">Contact</router-link>
     </div>
+    
     <transition name="route" mode="out-in">
       <router-view :key="$route.fullPath"></router-view>
     </transition>
+
+    <!-- <div class="github-link">
+      <font-awesome-icon :icon="['fab', 'github-square']" size="3x"  />
+    </div> -->
   </div>
 </template>
 
@@ -158,5 +164,10 @@ input:focus, textarea:focus, select:focus {
   color: grey;
   background: #f2f2f2;
   transition: 1s;
+}
+.github-link {
+  position: fixed;
+  bottom: 0;
+  right: 0;
 }
 </style>

@@ -2,8 +2,7 @@
   <div>
     <p>This is an example of a form that might be used to create a user profile. Please be aware that this data will be saved to be used in another demo.</p>
 
-    <form v-if="stage === 'form'">
-
+    <form v-if="stage === 'form'" @submit.prevent>
       <div class="form-small-inputs">
         <div :style="{ background: palette[0] }">
           <h2>Nickname</h2>
@@ -42,19 +41,11 @@
         </div>
         <div :style="{ background: palette[3] }">
           <h2>Icon</h2>
-          <div class="icon-picker">
-            <font-awesome-icon
-            v-for="(icon, index) in iconList"
-            @click="selectIcon(icon)"
-            :key="icon"
-            :icon="icon"
-            :style="{ background: [...palette, ...palette, ...palette][index] }"
-            :class="{ 'selected-icon': icon === profile.icon }"
-            class="icon" />
-          </div>
+          <icon-picker
+          @select-icon="profile.icon = $event"
+          :selected-icon="profile.icon" />
         </div>
       </div>
-
     </form>
 
     <div v-else style="display:flex; justify-content: center">
@@ -87,11 +78,13 @@
 
 <script>
 import { Slider } from 'vue-color';
+import  IconPicker from '@/components/IconPicker';
 
 export default {
   name: 'Form',
   components: {
-    'slider-picker': Slider
+    'slider-picker': Slider,
+    'icon-picker': IconPicker
   },
   data() {
     return {
@@ -135,7 +128,28 @@ export default {
         drink: null,
         icon: null,
         color: {
-          hex: '#79d28f'
+          "hsl": {
+            "h": 134.8314606741573,
+            "s": 0.49999999999999983,
+            "l": 0.65,
+            "a": 1
+          },
+          "hex": "#79D28F",
+          "rgba": {
+            "r": 121,
+            "g": 210,
+            "b": 143,
+            "a": 1
+          },
+          "hsv": {
+            "h": 134.8314606741573,
+            "s": 0.4242424242424241,
+            "v": 0.825,
+            "a" :1
+          },
+          "oldHue": 134.8314606741573,
+          "source": "hsl",
+          "a": 1
         }
       }
     }
@@ -150,26 +164,22 @@ export default {
     }
   },
   methods: {
-    selectIcon(icon) {
-      this.profile.icon = icon;
-    },
     changeStage() {
       if (this.stage === 'form') {
-        this.stage = 'results';
         fetch(`${this.server}/save-profile`, {
           headers: {
             'Content-Type': 'application/json'
           },
           method: 'POST',
           body: JSON.stringify(this.profile)
-        }).then(response => {
-          return response.json();
-        }).then(data => {
-          console.log(data);
+        })
+        .then(response => response.json())
+        .then(data => {
           if (!this.profile._id) {
             this.profile['_id'] = data;
           };
         });
+        this.stage = 'results';
       } else {
         this.stage = 'form';
       };
@@ -177,7 +187,6 @@ export default {
   },
   created() {
     this.shuffleArray(this.palette);
-    this.shuffleArray(this.iconList);
   }
 }
 </script>
@@ -229,27 +238,6 @@ input, select {
 }
 .vc-slider {
   width: 90%;
-}
-.icon-picker {
-  height: 125px;
-  background: #c9c9c9;
-  overflow-x: scroll;
-  display: flex;
-  align-items: center;
-}
-.icon {
-  width: 50px;
-  height: 50px;
-  border-radius: 25px;
-  margin: 0 0.5rem;
-  padding: 0.5rem;
-  cursor: pointer;
-}
-.selected-icon {
-  background: black !important;
-  color: white;
-  transform: rotate(360deg);
-  transition: 1s;
 }
 .profile {
   width: 70%;

@@ -57,10 +57,6 @@ app.get('/xkcd', (req, res) => {
       res.send(body);
     });
   };
-})
-
-app.get('*', (req, res) => {
-  res.redirect('/');
 });
 
 io.on('connection', socket => {
@@ -70,27 +66,72 @@ io.on('connection', socket => {
 });
 
 mongo.connect('mongodb://localhost', (err, client) => {
-  const db = client.db('portfolio');
   if (err) throw err;
   console.log('Connected to MongoDB');
 
+  const db = client.db('portfolio');
+
   app.post('/save-profile', (req, res) => {
-    let o_id;
+    req.body.birthday = new Date(req.body.birthday);
     if (!req.body._id) {
-      db.collection('profiles').insertOne(req.body).then(response => {
-        res.send(response.ops[0]._id);
-      });
+      db.collection('profiles')
+      .insertOne(req.body)
+      .then(data => res.send(data.ops[0]._id));
     } else {
-      o_id = objectId(req.body._id);
       delete req.body._id;
-      db.collection('profiles').updateOne(
-        { _id: o_id },
+      db.collection('profiles')
+      .updateOne(
+        { _id: objectId(req.body._id) },
         { $set: req.body }
-      ).then(response => {
-        res.send(response)
-      });
+      )
+      .then(data => res.send(data));
     };
   });
+
+  app.get('/get-profiles', (req, res) => {
+
+    const params = {};
+
+    if (req.query.nickname) {
+      params['nickname'] = {
+        $regex: req.query.nickname,
+        $options: 'i'
+      };
+    };
+
+    if (req.query.bdayStart && req.query.bdayEnd) {
+      req.query.bdayStart = new Date(req.query.bdayStart);
+      req.query.bdayEnd = new Date(req.query.bdayEnd);
+      params['birthday'] = {
+        $gte: req.query.bdayStart,
+        $lte: req.query.bdayEnd
+      };
+    }
+    else if (req.query.bdayStart && !req.query.bdayEnd) {
+      req.query.bdayStart = new Date(req.query.bdayStart);
+      params['birthday'] = { $gte: req.query.bdayStart };
+    }
+    else if (!req.query.bdayStart && req.query.bdayEnd) {
+      req.query.bdayEnd = new Date(req.query.bdayEnd);
+      params['birthday'] = { $lte: req.query.bdayEnd };
+    };
+
+    if (req.query.icon) {
+      params['icon'] = req.query.icon;
+    };
+
+    db.collection('profiles')
+    .find(params)
+    .toArray()
+    .then((data, err) => {
+      if (err) throw err;
+      data.map(item => {
+        item['created'] = item._id.getTimestamp();
+      });
+      res.send(data);
+    });
+  });
+
 });
 
 const port = 2626;

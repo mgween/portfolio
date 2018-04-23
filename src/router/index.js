@@ -1,17 +1,17 @@
 import Vue from 'vue';
 import Router from 'vue-router';
 
-import Home from '@/components/Home';
-import About from '@/components/About';
-import Contact from '@/components/Contact';
+import Home from '@/components/pages/Home';
+import About from '@/components/pages/About';
+import Contact from '@/components/pages/Contact';
 
-import Search from '@/components/demos/Search';
-import LiveUpdates from '@/components/demos/LiveUpdates';
-import Marketing from '@/components/demos/Marketing';
-import Api from '@/components/demos/Api';
-import Form from '@/components/demos/Form';
+import Search from '@/components/pages/demos/Search';
+import LiveUpdates from '@/components/pages/demos/LiveUpdates';
+import Marketing from '@/components/pages/demos/Marketing';
+import Api from '@/components/pages/demos/Api';
+import Form from '@/components/pages/demos/Form';
 
-import ComingSoon from '@/components/ComingSoon';
+import ComingSoon from '@/components/pages/ComingSoon';
 
 Vue.use(Router);
 

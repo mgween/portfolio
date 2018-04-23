@@ -9,7 +9,7 @@
 
 <script>
 import Post from './Post';
-import { descriptions } from '../assets/demo-descriptions';
+import { descriptions } from '@/assets/demo-descriptions';
 
 export default {
   name: 'Home',

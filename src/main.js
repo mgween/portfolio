@@ -8,6 +8,7 @@ import moment from 'moment';
 import fontawesome from '@fortawesome/fontawesome';
 import FontAwesomeIcon from '@fortawesome/vue-fontawesome';
 import '@fortawesome/fontawesome-free-solid';
+// import '@fortawesome/fontawesome-free-brands';
 
 Vue.use(VueChatScroll);
 

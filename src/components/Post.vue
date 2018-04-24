@@ -3,15 +3,22 @@
     <h2>{{ post.title }}</h2>
     <p v-html="post.body"></p>
     <router-link :to="'/demo/' + post.path" class="icon-button demo-link">
-      <font-awesome-icon icon="arrow-circle-right" size="2x"/>
+      <font-awesome-icon :icon="faArrowCircleRight" size="2x"/>
     </router-link>
   </div>
 </template>
 
 <script>
+import faArrowCircleRight from '@fortawesome/fontawesome-free-solid/faArrowCircleRight';
+
 export default {
   name: 'Post',
-  props: ['post']
+  props: ['post'],
+  data() {
+    return {
+      faArrowCircleRight: faArrowCircleRight
+    }
+  }
 }
 </script>
 

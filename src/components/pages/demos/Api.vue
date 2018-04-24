@@ -6,7 +6,7 @@
         <div></div>
         <h2>Quotes on Design</h2>
         <button @click="getQuote" class="icon-button">
-          <font-awesome-icon icon="paint-brush" size="2x"/>
+          <font-awesome-icon :icon="icons.faPaintBrush" size="2x"/>
         </button>
       </div>
       <transition name="collapse" mode="out-in">
@@ -24,7 +24,7 @@
         <div></div>
         <h2>SpaceX Launches</h2>
         <button @click="getSpaceXData" class="icon-button">
-          <font-awesome-icon icon="rocket" size="2x"/>
+          <font-awesome-icon :icon="icons.faRocket" size="2x"/>
         </button>
       </div>
       <transition name="collapse" mode="out-in">
@@ -51,7 +51,7 @@
         <div></div>
         <h2>xkcd Comics</h2>
         <button @click="getXkcd" ref="xkcdButton" class="icon-button">
-          <font-awesome-icon icon="pencil-alt" size="2x"/>
+          <font-awesome-icon :icon="icons.faPencilAlt" size="2x"/>
         </button>
       </div>
       <transition name="collapse" mode="out-in">
@@ -65,6 +65,10 @@
 </template>
 
 <script>
+import faPaintBrush from '@fortawesome/fontawesome-free-solid/faPaintBrush';
+import faRocket from '@fortawesome/fontawesome-free-solid/faRocket';
+import faPencilAlt from '@fortawesome/fontawesome-free-solid/faPencilAlt';
+
 export default {
   name: 'Api',
   data() {
@@ -78,7 +82,12 @@ export default {
         max: null,
         display: null
       },
-      sectionpalette: []
+      sectionpalette: [],
+      icons: {
+        faPaintBrush: faPaintBrush,
+        faRocket: faRocket,
+        faPencilAlt: faPencilAlt
+      }
     }
   },
   methods: {

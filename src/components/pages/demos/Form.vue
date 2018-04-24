@@ -52,7 +52,7 @@
       <div :style="{ background: profile.color.hex }" class="profile">
         <span>{{ profile.nickname }}</span>
         <div class="profile-details">
-          <font-awesome-icon :icon="profile.icon" size="10x" />
+          <font-awesome-icon :icon="findIcon(profile.icon)" size="10x" />
           <div>
             <span>Birthday: {{ $moment(profile.birthday).format('DD MMM YYYY') }}</span>
             <span>Favorite Drink: {{ profile.drink }}</span>
@@ -68,8 +68,8 @@
       type="submit"
       class="submit-button icon-button"
       :style="{ background: palette[5] }">
-        <font-awesome-icon v-if="stage === 'form'" icon="arrow-right" size="2x" />
-        <font-awesome-icon v-if="stage === 'results'" icon="arrow-left" size="2x" />
+        <font-awesome-icon v-if="stage === 'form'" :icon="icons.faArrowRight" size="2x" />
+        <font-awesome-icon v-if="stage === 'results'" :icon="icons.faArrowLeft" size="2x" />
       </button>
     </transition>
 
@@ -79,6 +79,8 @@
 <script>
 import { Slider } from 'vue-color';
 import  IconPicker from '@/components/IconPicker';
+import faArrowRight from '@fortawesome/fontawesome-free-solid/faArrowRight';
+import faArrowLeft from '@fortawesome/fontawesome-free-solid/faArrowLeft';
 
 export default {
   name: 'Form',
@@ -89,21 +91,6 @@ export default {
   data() {
     return {
       stage: 'form',
-      iconList: [
-        'bolt',
-        'cogs',
-        'dove',
-        'eye',
-        'flask',
-        'gem',
-        'heart',
-        'leaf',
-        'moon',
-        'music',
-        'paw',
-        'snowflake',
-        'wrench'
-      ],
       drinkList: {
         alcoholic: [
           'Beer',
@@ -151,6 +138,10 @@ export default {
           "source": "hsl",
           "a": 1
         }
+      },
+      icons: {
+        faArrowRight: faArrowRight,
+        faArrowLeft: faArrowLeft
       }
     }
   },
@@ -184,6 +175,11 @@ export default {
       } else {
         this.stage = 'form';
       };
+    },
+    findIcon(iconName) {
+      return IconPicker.data().iconList.filter(item => {
+        return item.iconName === iconName;
+      })[0];
     }
   },
   created() {

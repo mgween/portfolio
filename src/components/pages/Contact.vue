@@ -7,7 +7,7 @@
         <input v-model="form.subject" placeholder="Subject" :style="inputColorizer(4)" name="subject" class="bottom-margin">
         <textarea v-model="form.message" rows="15" placeholder="Message" :style="inputColorizer(5)" class="bottom-margin"></textarea>
         <button type="submit" name="submit" :disabled="!valid" :class="submitButtonClass">
-          <font-awesome-icon icon="envelope" size="2x"/>
+          <font-awesome-icon :icon="faEnvelope" size="2x"/>
         </button>
       </form>
       <div :style="{ background: palette[1] }">
@@ -23,6 +23,8 @@
 </template>
 
 <script>
+import faEnvelope from '@fortawesome/fontawesome-free-solid/faEnvelope';
+
 export default {
   name: 'Contact',
   data() {
@@ -33,7 +35,8 @@ export default {
         subject: '',
         message: ''
       },
-      toast: ''
+      toast: '',
+      faEnvelope: faEnvelope
     }
   },
   computed: {

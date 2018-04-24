@@ -2,34 +2,48 @@
   <div class="icon-picker">
     <font-awesome-icon
     v-for="(icon, index) in iconList"
-    @click="selectIcon(icon)"
-    :key="icon"
+    :key="icon.iconName"
     :icon="icon"
+    @click="selectIcon(icon.iconName)"
     :style="{ background: [...palette, ...palette, ...palette][index] }"
-    :class="{ 'selected-icon': icon === selectedIcon }"
+    :class="{ 'selected-icon': icon.iconName === selectedIcon }"
     class="icon" />
   </div>
 </template>
 
 <script>
+import faBolt from '@fortawesome/fontawesome-free-solid/faBolt';
+import faCogs from '@fortawesome/fontawesome-free-solid/faCogs';
+import faDove from '@fortawesome/fontawesome-free-solid/faDove';
+import faEye from '@fortawesome/fontawesome-free-solid/faEye';
+import faFlask from '@fortawesome/fontawesome-free-solid/faFlask';
+import faGem from '@fortawesome/fontawesome-free-solid/faGem';
+import faHeart from '@fortawesome/fontawesome-free-solid/faHeart';
+import faLeaf from '@fortawesome/fontawesome-free-solid/faLeaf';
+import faMoon from '@fortawesome/fontawesome-free-solid/faMoon';
+import faMusic from '@fortawesome/fontawesome-free-solid/faMusic';
+import faPaw from '@fortawesome/fontawesome-free-solid/faPaw';
+import faSnowflake from '@fortawesome/fontawesome-free-solid/faSnowflake';
+import faWrench from '@fortawesome/fontawesome-free-solid/faWrench';
+
 export default {
   name: 'IconPicker',
   data() {
     return {
       iconList: [
-        'bolt',
-        'cogs',
-        'dove',
-        'eye',
-        'flask',
-        'gem',
-        'heart',
-        'leaf',
-        'moon',
-        'music',
-        'paw',
-        'snowflake',
-        'wrench'
+        faBolt,
+        faCogs,
+        faDove,
+        faEye,
+        faFlask,
+        faGem,
+        faHeart,
+        faLeaf,
+        faMoon,
+        faMusic,
+        faPaw,
+        faSnowflake,
+        faWrench
       ]
     }
   },

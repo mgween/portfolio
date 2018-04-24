@@ -22,34 +22,7 @@
 </template>
 
 <script>
-import Vue from 'vue';
-
-Vue.mixin({
-  data() {
-    return {
-      server: location.host === 'localhost:8081' ? 'http://localhost:2626' : '',
-      palette: [
-        '#ffb3ba',
-        '#ffdfba',
-        '#ffffba',
-        '#baffc9',
-        '#bae1ff',
-        '#b19cd9'
-      ]
-    }
-  },
-  methods: {
-    shuffleArray(array) { // Source: https://stackoverflow.com/a/12646864
-      for (let i = array.length - 1; i > 0; i--) {
-        let j = Math.floor(Math.random() * (i + 1));
-        [array[i], array[j]] = [array[j], array[i]];
-      };
-    },
-    inputColorizer(index) {
-      return { background: `linear-gradient(to right, #c9c9c9 50%, ${this.palette[index]} 50%)` };
-    }
-  }
-});
+// import '@fortawesome/fontawesome-free-brands';
 
 export default {
   name: 'App'

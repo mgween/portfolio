@@ -8,7 +8,7 @@
 </template>
 
 <script>
-import Post from './Post';
+import Post from '@/components/Post';
 import { descriptions } from '@/assets/demo-descriptions';
 
 export default {

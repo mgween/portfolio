@@ -55,6 +55,14 @@ export default {
   props: [ 'selected-icon' ],
   created() {
     this.shuffleArray(this.iconList);
+    if (this.$props.selectedIcon) {
+      this.iconList.unshift(
+        this.iconList.splice(
+          this.iconList.map(item => item.iconName).indexOf(this.$props.selectedIcon),
+          1
+        )[0]
+      );
+    };
     this.shuffleArray(this.palette);
   }
 }

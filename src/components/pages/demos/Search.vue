@@ -1,5 +1,6 @@
 <template lang="html">
   <div>
+    <p>This form will run queries against a database containing information from the <router-link to="/demo/form" :style="{ color: palette[3] }">Complex Forms</router-link> demo.</p>
     <transition name="flip" mode="out-in">
       <div v-if="!results" key="form" class="form-container">
         <form @submit.prevent>
@@ -77,7 +78,7 @@
             </table>
           </div>
           <div v-else>
-            No Results Found
+            <h2>No Results Found</h2>
           </div>
         </div>
       </div>
@@ -132,6 +133,9 @@ export default {
 </script>
 
 <style lang="css" scoped>
+p {
+  color: white;
+}
 form {
   width: 100%;
   display: grid;

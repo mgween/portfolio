@@ -108,9 +108,9 @@ app.get('/get-profiles', (req, res) => {
     };
   };
 
-  const iconMatch = () => {
-    if (req.query.icon) {
-      return r.row('icon').eq(req.query.icon);
+  const strictMatch = (dbParam, reqParam) => {
+    if (reqParam) {
+      return r.row(dbParam).eq(reqParam);
     } else {
       return r.row;
     };
@@ -118,7 +118,10 @@ app.get('/get-profiles', (req, res) => {
 
   r.table('profiles')
   .filter(
-    nicknameMatch().and(birthdayMatch()).and(iconMatch())
+    nicknameMatch()
+    .and(birthdayMatch())
+    .and(strictMatch('icon', req.query.icon))
+    .and(strictMatch('drink', req.query.drink))
   )
   .then(data => res.send(data))
   .catch(err => console.log(err));

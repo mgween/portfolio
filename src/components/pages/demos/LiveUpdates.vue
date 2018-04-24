@@ -103,9 +103,6 @@ export default {
 p {
   color: white;
 }
-a {
-  font-weight: bold;
-}
 .intro, .intro-container {
   display: flex;
   flex-direction: column;

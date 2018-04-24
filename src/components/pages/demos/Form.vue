@@ -1,6 +1,6 @@
 <template lang="html">
   <div>
-    <p>This is an example of a form that might be used to create a user profile. Please be aware that this data will be saved to be used in another demo.</p>
+    <p>This is an example of a form that might be used to create a user profile. Please be aware that this data will be saved to be used in the <router-link to="/demo/search" :style="{ color: palette[5] }">Search Logic</router-link> demo.</p>
 
     <transition name="flip" mode="out-in">
       <form v-if="stage === 'form'" @submit.prevent>

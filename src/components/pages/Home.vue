@@ -21,7 +21,7 @@ export default {
       if (item.linkString) {
         item.body = item.body.replace(
           item.linkString,
-          `<a href="${item.linkSite}">${item.linkString}</a>`
+          `<a href="${item.linkSite}" target="_blank" rel="noopener noreferrer">${item.linkString}</a>`
         );
       };
     });

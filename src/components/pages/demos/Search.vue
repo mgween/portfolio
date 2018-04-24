@@ -70,7 +70,7 @@
                     :icon="findIcon(result.icon)" />
                   </td>
                   <td>{{ result.nickname }}</td>
-                  <td>{{ $moment(result.birthday).format('MMM DD YYYY') }}</td>
+                  <td>{{ $moment(result.birthday).utc().format('MMM DD YYYY') }}</td>
                   <td>{{ result.drink }}</td>
                 </tr>
               </tbody>

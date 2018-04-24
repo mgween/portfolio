@@ -113,7 +113,7 @@ app.get('/get-profiles', (req, res) => {
       return r.row('icon').eq(req.query.icon);
     } else {
       return r.row;
-    }
+    };
   };
 
   r.table('profiles')

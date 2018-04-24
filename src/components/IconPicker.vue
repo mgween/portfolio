@@ -55,6 +55,7 @@ export default {
   props: [ 'selected-icon' ],
   created() {
     this.shuffleArray(this.iconList);
+    this.shuffleArray(this.palette);
   }
 }
 </script>

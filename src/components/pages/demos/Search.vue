@@ -1,6 +1,6 @@
 <template lang="html">
   <div>
-    <p>This form will run queries against a database containing information from the <router-link to="/demo/form" :style="{ color: palette[3] }">Complex Forms</router-link> demo.</p>
+    <p>This form will run queries against a database containing information from the <router-link to="/demo/form" :style="{ color: palette[3] }">Complex Forms</router-link> demo. At least one parameter must be provided to execute a search.</p>
     <transition name="flip" mode="out-in">
       <div v-if="!results" key="form" class="form-container">
         <form @submit.prevent>
@@ -10,7 +10,7 @@
           <div :style="{ background: palette[2] }">
             Favorite Drink:
             <select v-model="params.drink" :style="inputColorizer(3)">
-              <option disabled value="">-- Drinks --</option>
+              <option value="">-- Drinks --</option>
               <optgroup label="Alcoholic">
                 <option v-for="drink in drinkList.alcoholic">
                   {{ drink }}
@@ -133,6 +133,11 @@ export default {
 </script>
 
 <style lang="css" scoped>
+@media screen and (max-width: 768px) {
+  form {
+    grid-template-columns: 100% !important;
+  }
+}
 p {
   color: white;
 }

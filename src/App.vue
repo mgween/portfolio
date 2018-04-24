@@ -73,27 +73,26 @@ input:focus, textarea:focus, select:focus {
   color: black;
 }
 
-.route-enter-active, .route-leave-active {
-  transition: 0.75s;
+.flip-enter-active, .flip-leave-active, .route-enter-active, .route-leave-active {
+  transition: 0.3s;
 }
-.route-enter {
-  transform: translateX(-160%);
-}
-.route-leave-to {
-  transform: translateX(160%);
-}
-.collapse-enter-active, .collapse-leave-active {
-  transition: all .3s;
-}
-.collapse-enter, .collapse-leave-to {
+.flip-enter, .flip-leave-to, .route-enter, .route-leave-to {
   transform: scale(0, 1);
 }
 .fade-enter-active, .fade-leave-active {
-  transition: opacity .5s;
+  transition: 0.5s;
 }
 .fade-enter, .fade-leave-to {
   opacity: 0;
 }
+.slide-out-enter, .slide-out-leave-to {
+  transform: translate(0, -100%);
+}
+.slide-out-enter-active, .slide-out-leave-active {
+  z-index: -100;
+  transition: 0.3s;
+}
+
 .icon-button {
   color: #636363;
   background: none;

@@ -9,7 +9,7 @@
           <font-awesome-icon :icon="icons.faPaintBrush" size="2x"/>
         </button>
       </div>
-      <transition name="collapse" mode="out-in">
+      <transition name="flip" mode="out-in">
         <div v-if="quote" :key="quote.ID">
           <div v-html="quote.content"></div>
           <p>- {{ quote.title }}</p>
@@ -27,7 +27,7 @@
           <font-awesome-icon :icon="icons.faRocket" size="2x"/>
         </button>
       </div>
-      <transition name="collapse" mode="out-in">
+      <transition name="flip" mode="out-in">
         <div v-if="spaceX.display" :key="spaceX.display.flight_number" class="space-x-data">
           <div class="space-x-details">
             <img :src="spaceX.display.links.mission_patch" width="200" height="200" class="space-x-img">
@@ -54,7 +54,7 @@
           <font-awesome-icon :icon="icons.faPencilAlt" size="2x"/>
         </button>
       </div>
-      <transition name="collapse" mode="out-in">
+      <transition name="flip" mode="out-in">
         <div v-if="xkcd.display" :key="xkcd.display.num">
           <img :src="xkcd.display.img" @click="openXkcd()" :title="xkcd.display.alt" class="xkcd-img">
         </div>

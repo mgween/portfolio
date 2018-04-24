@@ -1,29 +1,33 @@
 <template lang="html">
   <div>
 
-    <p>This is a simple chat application. You can open this page in a new tab with <a target="_blank" :href="'#' + $route.fullPath" :style="{ color: palette[3] }">this link</a> to see how the messages are recieved in real time.</p>
+    <p>This is a simple chat application. You can open this page in a new tab with <a target="_blank" :href="'#' + $route.fullPath" :style="{ color: palette[0] }">this link</a> to see how the messages are recieved in real time.</p>
 
-    <transition name="collapse" mode="out-in">
-      <div v-if="!socket" key="intro" :style="{ background: palette[0] }" class="intro">
-        <h2>What is your name?</h2>
-        <input v-model="username" @keyup.enter="connect" :style="inputColorizer(4)">
-        <transition name="fade">
-          <button v-if="username" @click="connect" class="icon-button">
-            <font-awesome-icon :icon="icons.faComments" size="2x"/>
-          </button>
+    <transition name="flip" mode="out-in">
+      <div v-if="!socket" key="intro" class="intro-container">
+        <div :style="{ background: palette[1] }" class="intro">
+          <h2>What is your name?</h2>
+          <input v-model="username" @keyup.enter="connect" :style="inputColorizer(2)">
+        </div>
+        <transition name="slide-out">
+          <div v-if="username" :style="{ background: palette[3] }" class="connect-button-container">
+            <button @click="connect" class="icon-button">
+              <font-awesome-icon :icon="icons.faComments" size="2x"/>
+            </button>
+          </div>
         </transition>
       </div>
 
       <div v-else key="chat" class="chat-container">
 
         <div v-chat-scroll class="chat-log">
-          <div v-for="message in chatLog" :style="{ background: palette[1] }">
+          <div v-for="message in chatLog" :style="{ background: palette[4] }">
             {{ message.author }}: <strong>{{ message.text }}</strong>
           </div>
         </div>
 
-        <div class="sender" :style="{ background: palette[2] }">
-          <textarea v-model="message" @keyup.enter="sendMessage" placeholder="Enter a message." :style="inputColorizer(5)" />
+        <div class="sender" :style="{ background: palette[5] }">
+          <textarea v-model="message" @keyup.enter="sendMessage" placeholder="Enter a message." :style="inputColorizer(1)" />
           <button @click="sendMessage" class="icon-button">
             <font-awesome-icon :icon="icons.faPaperPlane" size="2x"/>
           </button>
@@ -102,17 +106,24 @@ p {
 a {
   font-weight: bold;
 }
-.intro {
+.intro, .intro-container {
   display: flex;
   flex-direction: column;
   align-items: center;
+}
+.intro {
+  width: 70%;
+  padding: 1rem;
 }
 .intro > input {
   font-size: 1.5em;
   max-width: 90%;
 }
-.intro > * {
-  margin: 1rem;
+.connect-button-container {
+  border-radius: 0 0 1rem 1rem;
+}
+.connect-button-container > button {
+  padding: 1rem 3rem;
 }
 .chat-container {
   word-wrap: break-word;

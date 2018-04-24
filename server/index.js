@@ -28,6 +28,10 @@ const transporter = nodemailer.createTransport(
 );
 
 app.post('/send-message', (req, res) => {
+  r.table('contact_messages')
+  .insert(req.body)
+  .catch(err => console.log(err));
+  
   transporter.sendMail(
     {
       from: 'dev@mattgween.com',

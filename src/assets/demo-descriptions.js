@@ -23,9 +23,9 @@ export const descriptions = [
     linkSite: "https://socket.io",
     path: "live"
   },
-  {
-    body: "Having a clean and professional website can go a long way in helping to attract new business. I can put together a site using the newest features of HTML5, CSS3, and ECMAScript 6 that will look good on any device.",
-    title: "Static Marketing Site",
-    path: "marketing"
-  },
+  // {
+  //   body: "Having a clean and professional website can go a long way in helping to attract new business. I can put together a site using the newest features of HTML5, CSS3, and ECMAScript 6 that will look good on any device.",
+  //   title: "Static Marketing Site",
+  //   path: "marketing"
+  // },
 ]

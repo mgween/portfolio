@@ -52,7 +52,7 @@ export default {
   },
   methods: {
     sendMessage() {
-      fetch(`/send-message`, {
+      fetch(`${this.server}/send-message`, {
         method: 'POST',
         body: JSON.stringify(this.form),
         headers: { 'Content-Type': 'application/json' }

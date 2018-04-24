@@ -6,7 +6,7 @@
     <transition name="flip" mode="out-in">
       <div v-if="!socket" key="intro" class="intro-container">
         <div :style="{ background: palette[1] }" class="intro">
-          <h2>What is your name?</h2>
+          <h2>Nickname:</h2>
           <input v-model="username" @keyup.enter="connect" :style="inputColorizer(2)">
         </div>
         <transition name="slide-out">

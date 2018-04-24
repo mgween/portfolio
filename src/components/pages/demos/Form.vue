@@ -8,12 +8,12 @@
           <div :style="{ background: palette[0] }">
             <h2>Nickname</h2>
             <input v-model="profile.nickname"
-            :style="inputColorizer(1)">
+            :style="inputColorizer(3)">
           </div>
           <div :style="{ background: palette[2] }">
             <h2>Birthday</h2>
             <input v-model="profile.birthday" type="date"
-            :style="inputColorizer(3)">
+            :style="inputColorizer(1)">
           </div>
           <div :style="{ background: palette[4] }">
             <h2>Favorite Drink</h2>

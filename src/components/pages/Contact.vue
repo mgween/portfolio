@@ -6,7 +6,7 @@
         <input v-model="form.email" placeholder="Your Email Address" :style="inputColorizer(3)" name="email" class="bottom-margin">
         <input v-model="form.subject" placeholder="Subject" :style="inputColorizer(4)" name="subject" class="bottom-margin">
         <textarea v-model="form.message" rows="15" placeholder="Message" :style="inputColorizer(5)" class="bottom-margin"></textarea>
-        <button type="submit" name="submit" :disabled="!valid" :class="submitButtonClass">
+        <button type="submit" name="submit" :disabled="!valid" :class="submitButtonClass" class="icon-button">
           <font-awesome-icon :icon="faEnvelope" size="2x"/>
         </button>
       </form>
@@ -45,7 +45,6 @@ export default {
     },
     submitButtonClass() {
       return {
-        active: this.valid,
         inactive: !this.valid
       };
     }
@@ -124,16 +123,6 @@ form > textarea {
 button[type=submit] {
   background: none;
   border: none;
-}
-.active {
-  cursor: pointer;
-  transition: 0.5s;
-  color: #636363;
-}
-.active:hover {
-  transform: scale(1.5);
-  transition: 0.5s;
-  color: black;
 }
 .inactive {
   opacity: 0;

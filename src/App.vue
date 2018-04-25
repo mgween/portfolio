@@ -106,6 +106,10 @@ input:focus, textarea:focus, select:focus {
   color: black;
   transition: 0.5s;
 }
+.icon-button:active {
+  color: #bababa;
+  transition: 0s;
+}
 
 .logo {
   display: flex;

@@ -56,7 +56,7 @@
       </div>
       <transition name="flip" mode="out-in">
         <div v-if="xkcd.display" :key="xkcd.display.num">
-          <img :src="xkcd.display.img" @click="openXkcd()" :title="xkcd.display.alt" class="xkcd-img">
+          <img :src="xkcd.display.img" @click="openXkcd" :title="xkcd.display.alt" class="xkcd-img">
         </div>
       </transition>
     </div>
@@ -162,10 +162,6 @@ export default {
 <style lang="css" scoped>
 .description {
   color: white;
-}
-.icon-button:active {
-  color: #bababa;
-  transition: 0s;
 }
 .section {
   display: flex;

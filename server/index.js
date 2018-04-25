@@ -94,6 +94,14 @@ app.get('/get-profiles', (req, res) => {
   };
 
   const birthdayMatch = () => {
+    const fixDate = (date) => {
+      if (parseInt(date.substr(0, 4)) < 1400) {
+        return date.replace(/\d+/, '1400');
+      };
+    };
+    req.query.bdayStart = fixDate(req.query.bdayStart);
+    req.query.bdayEnd = fixDate(req.query.bdayEnd);
+
     const searchBefore = () => {
       return r.row('birthday').le(new Date(req.query.bdayEnd))
     };

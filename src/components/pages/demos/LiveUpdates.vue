@@ -29,7 +29,7 @@
         <div class="sender" :style="{ background: palette[5] }">
           <textarea v-model="message" @keyup.enter="sendMessage" placeholder="Enter a message." :style="inputColorizer(1)" />
           <button @click="sendMessage" class="icon-button">
-            <font-awesome-icon :icon="icons.faPaperPlane" size="2x"/>
+            <font-awesome-icon :icon="icons.faArrowRight" size="2x"/>
           </button>
         </div>
 
@@ -42,7 +42,7 @@
 <script>
 import io from 'socket.io-client';
 import faComments from '@fortawesome/fontawesome-free-solid/faComments';
-import faPaperPlane from '@fortawesome/fontawesome-free-solid/faPaperPlane';
+import faArrowRight from '@fortawesome/fontawesome-free-solid/faArrowRight';
 
 export default {
   name: 'LiveUpdates',
@@ -54,7 +54,7 @@ export default {
       chatLog: [],
       icons: {
         faComments: faComments,
-        faPaperPlane: faPaperPlane
+        faArrowRight: faArrowRight
       }
     }
   },

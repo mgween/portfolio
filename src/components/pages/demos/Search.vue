@@ -3,7 +3,7 @@
     <p>This form will run queries against a database containing information from the <router-link to="/demo/form" :style="{ color: palette[3] }">Complex Forms</router-link> demo. At least one parameter must be provided to execute a search.</p>
     <transition name="flip" mode="out-in">
       <div v-if="!results" key="form" class="form-container">
-        <form @submit.prevent>
+        <form @submit.prevent="doSearch">
           <div :style="{ background: palette[0] }">Nickname:
             <input v-model="params.nickname" :style="inputColorizer(1)">
           </div>
@@ -38,8 +38,8 @@
           </div>
         </form>
         <transition name="slide-out">
-          <div v-if="params.nickname || params.bdayStart || params.bdayEnd || params.drink || params.icon" :style="{ background: palette[3] }" class="search-button-container">
-            <button @click="doSearch()" class="icon-button">
+          <div v-if="formValid" :style="{ background: palette[3] }" class="search-button-container">
+            <button @click="doSearch" class="icon-button">
               <font-awesome-icon :icon="icons.faSearch" size="2x" />
             </button>
           </div>
@@ -113,12 +113,19 @@ export default {
       }
     }
   },
+  computed: {
+    formValid() {
+      return this.params.nickname || this.params.bdayStart || this.params.bdayEnd || this.params.drink || this.params.icon;
+    },
+  },
   methods: {
     doSearch() {
-      const params = new URLSearchParams(Object.entries(this.params));
-      fetch(`${this.server}/get-profiles?${params}`)
-      .then(response => response.json())
-      .then(data => this.results = data);
+      if (this.formValid) {
+        const params = new URLSearchParams(Object.entries(this.params));
+        fetch(`${this.server}/get-profiles?${params}`)
+        .then(response => response.json())
+        .then(data => this.results = data);
+      };
     },
     findIcon(iconName) {
       return IconPicker.data().iconList.filter(item => {

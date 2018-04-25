@@ -15,17 +15,22 @@
       <router-view :key="$route.fullPath"></router-view>
     </transition>
 
-    <!-- <div class="github-link">
-      <font-awesome-icon :icon="['fab', 'github-square']" size="3x"  />
-    </div> -->
+    <div class="github-link">
+      <a href="https://github.com/mgween/portfolio" target="_blank" rel="noopener noreferrer"><font-awesome-icon :icon="faGithub" size="3x" /></a>
+    </div>
   </div>
 </template>
 
 <script>
-// import '@fortawesome/fontawesome-free-brands';
+import faGithub from '@fortawesome/fontawesome-free-brands/faGithub';
 
 export default {
-  name: 'App'
+  name: 'App',
+  data() {
+    return {
+      faGithub: faGithub
+    }
+  }
 }
 </script>
 
@@ -44,6 +49,11 @@ body {
 @media screen and (min-width: 769px) {
   body {
     margin: 0 20vw 1rem;
+  }
+  .github-link {
+    position: fixed;
+    bottom: 0;
+    left: 0;
   }
 }
 
@@ -142,8 +152,10 @@ input:focus, textarea:focus, select:focus {
   transition: 1s;
 }
 .github-link {
-  position: fixed;
-  bottom: 0;
-  right: 0;
+  margin: 1rem;
 }
+.github-link > a {
+  color: black;
+}
+
 </style>

@@ -12,7 +12,7 @@ const r = require('rethinkdbdash')({
   host: 'localhost',
   db: 'portfolio'
 });
-
+const passwords = require('./passwords.js');
 app.use(cors());
 app.use(bodyParser.json());
 app.use(express.static(path.join(__dirname, '../dist')));
@@ -22,7 +22,7 @@ const transporter = nodemailer.createTransport(
     service: 'SendPulse',
     auth: {
       user: 'dev@mattgween.com',
-      pass: '***REMOVED***'
+      pass: passwords.sendPulse
     }
   }
 );

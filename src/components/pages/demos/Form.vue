@@ -80,7 +80,7 @@
 
 <script>
 import { formOptions } from '@/assets/form-options';
-import { Slider } from 'vue-color';
+import Slider from 'vue-color/src/components/Slider';
 import  IconPicker from '@/components/IconPicker';
 import faArrowRight from '@fortawesome/fontawesome-free-solid/faArrowRight';
 import faArrowLeft from '@fortawesome/fontawesome-free-solid/faArrowLeft';
@@ -147,6 +147,7 @@ export default {
   },
   created() {
     this.shuffleArray(this.palette);
+    console.log(Slider);
   }
 }
 </script>

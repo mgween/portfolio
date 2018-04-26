@@ -13,6 +13,7 @@ const r = require('rethinkdbdash')({
   db: 'portfolio'
 });
 const passwords = require('./passwords.js');
+
 app.use(cors());
 app.use(bodyParser.json());
 app.use(express.static(path.join(__dirname, '../dist')));

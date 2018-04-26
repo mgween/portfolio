@@ -88,7 +88,6 @@
 
 <script>
 import { formOptions } from '@/assets/form-options';
-import { Slider } from 'vue-color';
 import IconPicker from '@/components/IconPicker';
 import faSearch from '@fortawesome/fontawesome-free-solid/faSearch';
 import faArrowLeft from '@fortawesome/fontawesome-free-solid/faArrowLeft';

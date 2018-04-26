@@ -1,7 +1,7 @@
 <template>
   <div id="app">
     <div class="logo">
-      <img src="./assets/logo.png" height="100" width="100" alt="Matt's Logo">
+      <img src="/static/logo.png" height="100" width="100" alt="Matt's Logo">
       <h1>Matt Gween</h1>
     </div>
     

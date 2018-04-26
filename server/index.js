@@ -1,11 +1,11 @@
-const bodyParser = require('body-parser');
-const path = require('path');
 const express = require('express');
 const app = express();
-const cors = require('cors');
 const http = require('http').Server(app);
-const request = require('request');
 const io = require('socket.io')(http);
+const path = require('path');
+const cors = require('cors');
+const bodyParser = require('body-parser');
+const request = require('request');
 const nodemailer = require('nodemailer');
 const r = require('rethinkdbdash')({
   port: 28015,

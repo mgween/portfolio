@@ -1,6 +1,6 @@
 <template lang="html">
   <div>
-    <p>This form will run queries against a database containing information from the <router-link to="/demo/form" :style="{ color: palette[3] }">Complex Forms</router-link> demo. At least one parameter must be provided to execute a search.</p>
+    <p class="demo-description">This form will run queries against a database containing information from the <router-link to="/demo/form" :style="{ color: palette[3] }">Complex Forms</router-link> demo. At least one parameter must be provided to execute a search.</p>
     <transition name="flip" mode="out-in">
       <div v-if="!results" key="form" class="form-container">
         <form @submit.prevent="doSearch">
@@ -143,9 +143,6 @@ export default {
   form {
     grid-template-columns: 100% !important;
   }
-}
-p {
-  color: white;
 }
 form {
   width: 100%;

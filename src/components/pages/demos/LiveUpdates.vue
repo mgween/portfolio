@@ -1,7 +1,7 @@
 <template lang="html">
   <div>
 
-    <p>This is a simple chat application. You can open this page in a new tab with <a target="_blank" :href="'#' + $route.fullPath" :style="{ color: palette[0] }">this link</a> to see how the messages are recieved in real time.</p>
+    <p class="demo-description">This is a simple chat application. You can open this page in a new tab with <a target="_blank" :href="'#' + $route.fullPath" :style="{ color: palette[0] }">this link</a> to see how the messages are recieved in real time.</p>
 
     <transition name="flip" mode="out-in">
       <div v-if="!socket" key="intro" class="intro-container">
@@ -100,9 +100,6 @@ export default {
 </script>
 
 <style lang="css" scoped>
-p {
-  color: white;
-}
 .intro, .intro-container {
   display: flex;
   flex-direction: column;

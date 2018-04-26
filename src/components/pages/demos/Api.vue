@@ -1,6 +1,6 @@
 <template lang="html">
   <div>
-    <p class="description">This page shows a few services that have public APIs that can be used to access different kinds of data.</p>
+    <p class="demo-description">This page shows a few services that have public APIs that can be used to access different kinds of data.</p>
     <div class="section" :style="{ background: palette[0] }">
       <div class="title-bar">
         <div></div>
@@ -160,9 +160,6 @@ export default {
 </script>
 
 <style lang="css" scoped>
-.description {
-  color: white;
-}
 .section {
   display: flex;
   flex-direction: column;

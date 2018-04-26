@@ -1,6 +1,6 @@
 <template lang="html">
   <div>
-    <p>The examples below demonstrate a few of the features that I have had to implement in the course of my career. These are features that are generally found in all kinds of applications.</p>
+    <p class="demo-description">The examples below demonstrate a few of the features that I have had to implement in the course of my career. These are features that are generally found in all kinds of applications.</p>
     <div class="demo-board">
       <Post v-for="post in demoPosts" :key="post.title" :post="post" :style="{ background: post.color }"></Post>
     </div>
@@ -31,9 +31,6 @@ export default {
 </script>
 
 <style lang="css" scoped>
-p {
-  color: white;
-}
 .demo-board {
   display: grid;
   grid-template-columns: repeat(2, 1fr);

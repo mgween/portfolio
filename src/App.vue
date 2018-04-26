@@ -120,6 +120,10 @@ input:focus, textarea:focus, select:focus {
   color: #bababa;
   transition: 0s;
 }
+.demo-description {
+  color: white;
+  text-align: center;
+}
 
 .logo {
   display: flex;

@@ -1,6 +1,6 @@
 <template lang="html">
   <div>
-    <p>This is an example of a form that might be used to create a user profile. Please be aware that this data will be saved to be used in the <router-link to="/demo/search" :style="{ color: palette[5] }">Search Logic</router-link> demo.</p>
+    <p class="demo-description">This is an example of a form that might be used to create a user profile. Please be aware that this data will be saved to be used in the <router-link to="/demo/search" :style="{ color: palette[5] }">Search Logic</router-link> demo.</p>
 
     <transition name="flip" mode="out-in">
       <form v-if="stage === 'form'" @submit.prevent>
@@ -168,9 +168,6 @@ export default {
   .profile-details > div {
     margin-top: 1rem;
   }
-}
-p {
-  color: white;
 }
 input, select {
   font-size: 1.5em;
